@@ -1,0 +1,782 @@
+ @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto',sans-serif;
+}
+html{
+    scroll-behavior: smooth
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 100%;
+    min-height: 650px;
+    padding: 0 24px 50px;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.65),
+            rgba(0, 0, 0, 0.75)
+        ),
+        url("./assets/background.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.box {
+    display: none;
+}
+
+nav {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    max-width: 1200px;
+    height: 90px;
+    margin: 0 auto;
+}
+
+nav img {
+    width: 150px;
+    height: auto;
+}
+
+nav div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn {
+    padding: 6px 16px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.btn-sign {
+    padding: 6px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #e50914;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: background-color 0.2s ease;
+}
+
+.btn-sign:hover {
+    background-color: #c11119;
+}
+
+
+.textcontent {
+    width: 100%;
+    max-width: 800px;
+    margin: auto 0 24px;
+    padding-top: 70px;
+    text-align: center;
+    color: #fff;
+}
+
+.textcontent h1 {
+    margin-bottom: 18px;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -1px;
+}
+
+.textcontent span {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.textcontent p {
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 650px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+}
+
+form input {
+    flex: 1;
+    min-width: 0;
+    min-height: 56px;
+    padding: 14px 16px;
+
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+    outline: none;
+
+    background: rgba(0, 0, 0, 0.65);
+    color: #fff;
+    font-size: 1rem;
+}
+
+form input::placeholder {
+    color: #c5c5c5;
+}
+
+form input:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+form button {
+    min-height: 56px;
+    padding: 12px 24px;
+
+    border: none;
+    border-radius: 4px;
+    background-color: #e50914;
+    color: #fff;
+
+    font-size: 1.2rem;
+    font-weight: 700;
+    white-space: nowrap;
+
+    transition: background-color 0.2s ease;
+}
+
+form button:hover {
+    background-color: #c11119;
+}
+
+.curve-container {
+    height: 25px;
+    margin-top: -1px;
+
+    border-top: 4px solid #7e0e4a;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+
+    background: linear-gradient(
+        to bottom,
+        #3b30b7,
+        #000
+    );
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    margin: 0 auto;
+    padding: 25px 24px 35px;
+    background-color: #000;
+}
+
+.container h2 {
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+#trending_now {
+    width: 100%;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    width: 100%;
+    padding: 15px 8px 25px 18px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+
+    scrollbar-width: none;
+}
+
+.slides::-webkit-scrollbar {
+    display: none;
+}
+
+.trendingcard {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+
+    flex: 0 0 180px;
+    height: 250px;
+
+    transition: transform 0.25s ease;
+}
+
+.trendingcard:hover {
+    transform: scale(1.03);
+}
+
+.ranknumber {
+    position: absolute;
+    left: -12px;
+    bottom: -8px;
+    z-index: 2;
+
+    font-size: 6.5rem;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -5px;
+
+    color: #000;
+    -webkit-text-fill-color: #000;
+    -webkit-text-stroke: 2px #fff;
+    paint-order: stroke fill;
+    user-select: none;
+    pointer-events: none;
+}
+
+.posterplaceholder {
+    width: 100%;
+    height: 100%;
+}
+
+.poster {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin-left: 0;
+
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.poster img {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    border-radius: 8px;
+
+    transition: transform 0.25s ease;
+}
+
+.trendingcard:hover .poster img {
+    transform: scale(1.05);
+}
+
+
+/* =========================
+   7. More Reasons to Join
+========================= */
+
+.feature-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 25px 24px 40px;
+
+    background-color: #000;
+    color: #fff;
+}
+
+.feature-section h2 {
+    margin-bottom: 22px;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.featureslides {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.featurecards {
+    min-width: 0;
+    min-height: 270px;
+    padding: 24px 18px;
+
+    border: 1px solid #242039;
+    border-radius: 14px;
+
+    background: linear-gradient(
+        145deg,
+        #192247,
+        #210e19
+    );
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+}
+
+.featurecards:hover {
+    transform: translateY(-4px);
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: transparent;
+}
+
+.card h3 {
+    margin-bottom: 14px;
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.card p {
+    color: #c5c5d0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+
+/* =========================
+   8. FAQ Section
+========================= */
+
+.sectionfaq-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 35px 24px;
+
+    align-items: stretch;
+}
+
+.sectionfaq-section h2 {
+    margin-bottom: 16px;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.faq-item {
+    width: 100%;
+    background-color: #2d2d2d;
+    transition: background-color 0.2s ease;
+}
+
+.faq-item:hover {
+    background-color: #414141;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+
+    padding: 22px 24px;
+    font-size: 1.25rem;
+    font-weight: 400;
+
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+}
+
+.faq-question::marker {
+    content: "";
+}
+
+.faq-icon {
+    position: relative;
+    flex: 0 0 24px;
+    width: 24px;
+    height: 24px;
+}
+
+.faq-icon::before,
+.faq-icon::after {
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    transition: transform 0.2s ease;
+}
+
+.faq-icon::before {
+    top: 11px;
+    left: 0;
+    width: 24px;
+    height: 2px;
+}
+
+.faq-icon::after {
+    top: 0;
+    left: 11px;
+    width: 2px;
+    height: 24px;
+}
+
+.faq-item[open] .faq-icon::after {
+    transform: rotate(45deg);
+}
+
+.faq-item[open] .faq-icon::before {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    padding: 22px 24px;
+    border-top: 1px solid #000;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.faq-answer p {
+    margin: 0;
+}
+
+
+/* =========================
+   9. Bottom Signup
+========================= */
+
+.bottom-signup {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 24px 45px;
+    text-align: center;
+}
+
+.bottom-signup > p {
+    margin-bottom: 18px;
+    font-size: 1rem;
+}
+
+.bottom-signup .email-form {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+
+/* =========================
+   10. Footer
+========================= */
+
+.footer {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 35px 24px 50px;
+
+    color: #b3b3b3;
+    font-size: 0.9rem;
+}
+
+.footer a {
+    color: #b3b3b3;
+}
+
+.contact {
+    margin-bottom: 25px;
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px 24px;
+    margin-bottom: 30px;
+}
+
+.footer-links a {
+    font-size: 0.85rem;
+    text-decoration: underline;
+}
+
+.footer-language {
+    margin-bottom: 20px;
+}
+
+.footer-country {
+    font-size: 0.85rem;
+}
+
+
+/* =========================
+   11. Tablet
+========================= */
+
+@media (max-width: 900px) {
+    .featureslides {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .trendingcard {
+        flex-basis: 155px;
+        height: 220px;
+    }
+
+    .ranknumber {
+        font-size: 5.5rem;
+    }
+
+    .footer-links {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* =========================
+   12. Mobile
+========================= */
+
+@media (max-width: 600px) {
+    header {
+        min-height: 600px;
+        padding: 0 20px 35px;
+    }
+
+    nav {
+        height: 75px;
+        gap: 10px;
+    }
+
+    nav img {
+        width: 100px;
+        height: auto;
+    }
+
+    nav div {
+        gap: 8px;
+    }
+
+    .btn,
+    .btn-sign {
+        padding: 6px 9px;
+        font-size: 0.8rem;
+    }
+
+    .textcontent {
+        margin-top: auto;
+        margin-bottom: 22px;
+        padding-top: 40px;
+    }
+
+    .textcontent h1 {
+        font-size: clamp(2rem, 8vw, 2.5rem);
+        line-height: 1.15;
+        letter-spacing: 0;
+        margin-top: 0;
+        margin-bottom: 18px;
+    }
+
+    .textcontent span {
+        font-size: 1.05rem;
+        margin-bottom: 18px;
+    }
+
+    .textcontent p {
+        font-size: 0.95rem;
+        margin-bottom: 18px;
+    }
+
+    .form-container {
+        margin-bottom: 10px;
+    }
+
+    form {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    form input {
+        width: 100%;
+        min-height: 52px;
+    }
+
+    form button {
+        align-self: center;
+        min-height: 48px;
+        padding: 10px 18px;
+        font-size: 1.05rem;
+    }
+
+    .container {
+        padding: 22px 20px 25px;
+    }
+
+    .container h2,
+    .feature-section h2,
+    .sectionfaq-section h2 {
+        font-size: 1.3rem;
+    }
+
+    .slides {
+        gap: 22px;
+        padding-left: 14px;
+    }
+
+    .trendingcard {
+        flex-basis: 125px;
+        height: 180px;
+    }
+
+    .ranknumber {
+        left: -7px;
+        bottom: -5px;
+        font-size: 4.5rem;
+        letter-spacing: -4px;
+        -webkit-text-stroke-width: 1.5px;
+    }
+
+    .feature-section {
+        padding: 25px 20px;
+    }
+
+    .featureslides {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .featurecards {
+        min-height: 200px;
+        padding: 22px;
+    }
+
+    .card h3 {
+        font-size: 1.2rem;
+    }
+
+    .sectionfaq-section {
+        padding: 30px 20px;
+    }
+
+    .faq-question {
+        padding: 20px 16px;
+        font-size: 1.05rem;
+    }
+
+    .faq-icon {
+        flex-basis: 20px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .faq-icon::before {
+        top: 9px;
+        width: 20px;
+    }
+
+    .faq-icon::after {
+        left: 9px;
+        height: 20px;
+    }
+
+    .faq-answer {
+        padding: 18px 16px;
+        font-size: 1rem;
+    }
+
+    .bottom-signup {
+        padding: 20px 20px 35px;
+    }
+
+    .footer {
+        padding: 30px 20px 40px;
+    }
+
+    .footer-links {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+}
+
+
+/* =========================
+   13. Small Phones
+========================= */
+
+@media (max-width: 360px) {
+    nav img {
+        width: 80px;
+    }
+
+    nav div {
+        gap: 5px;
+    }
+
+    .btn,
+    .btn-sign {
+        padding: 5px 7px;
+        font-size: 0.75rem;
+    }
+
+    .textcontent h1 {
+        font-size: 1.9rem;
+    }
+
+    .trendingcard {
+        flex-basis: 110px;
+        height: 160px;
+    }
+
+    .ranknumber {
+        font-size: 4rem;
+    }
+
+    .footer-links {
+        grid-template-columns: 1fr;
+    }
+}
